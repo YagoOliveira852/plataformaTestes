@@ -8,8 +8,8 @@ module.exports = app => {
     app.post('/fluxo/basico', (req,res)=> {
         data = req.body
         var lista = {}
+        
         for(var i=0; i< Object.keys(data.Fluxo_Basico).length; i++){
-            console.log(data.Fluxo_Basico[i].search(data.Atores))
             if(data.Fluxo_Basico[i].search(data.Atores) >0){
                 var aux = data.Fluxo_Basico[i]
                 lista.aux
@@ -25,11 +25,11 @@ module.exports = app => {
             }
         }
         CT = {
-            "Título": [data.Id +" - " + Object.keys(data.Fluxo_Basico)],
+            "Título": [data.Id +" - " + "Fluxo_Basico"],
             "Dados de teste": [data.dados],
             "Passos": [lista],
             "Id-UC": [data.Id],
-            "Fluxo-UC": [Object.keys(data.Fluxo_Basico)]
+            "Fluxo-UC": ["Fluxo_Basico"]
         }
         res.send(CT)
     })
@@ -47,7 +47,7 @@ module.exports = app => {
                 if(JSON.stringify(data.Fluxo_Alternativo[keys][i]).search("Start") >0){
                     tupla = Object.keys(data.Fluxo_Alternativo[keys][i])
                     index = data.Fluxo_Alternativo[keys][i][tupla][0]
-                    console.log(data.Fluxo_Alternativo[keys][i][tupla][1])
+
                     for(var j = 0; j< index ; j++){
                         arr.push(data[data.Fluxo_Alternativo[keys][i][tupla][1]][j])
                     }
