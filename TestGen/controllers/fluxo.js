@@ -3,7 +3,7 @@ const fs = require('fs')
 const { stringify } = require('querystring')
 module.exports = app => {
 
-    app.get('/fluxo/basico', (req,res)=> res.send('o servidor está na porta 3000'))
+    app.get('/fluxo/basico', (req,res)=> {res.json('o servidor está na porta 3000')})
 
     app.post('/fluxo/basico', (req,res)=> {
         data = req.body
@@ -31,7 +31,7 @@ module.exports = app => {
             "Id-UC": [data.Id],
             "Fluxo-UC": ["Fluxo_Basico"]
         }
-        res.send(CT)
+        res.json(CT)
     })
 
     app.post('/fluxo/alternativo', (req,res)=> {
@@ -95,7 +95,7 @@ module.exports = app => {
             array.push(CT) 
         }
     
-        res.send(array)
+        res.json(array)
     })
 
     app.post('/fluxo/excecao', (req,res)=> {
@@ -160,6 +160,6 @@ module.exports = app => {
             array.push(CT)
         }
 
-        res.send(array)
+        res.json(array)
     })
 }

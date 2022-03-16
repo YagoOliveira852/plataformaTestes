@@ -67,6 +67,7 @@
 
 * https://www.alura.com.br/curso-online-node-rest-api
 * https://www.youtube.com/watch?v=Abo_GiaunlU
+* https://youtu.be/vYlz3SmNXQQ
 
 > ### Postman
 * https://youtu.be/5S9mMBEtJK4
