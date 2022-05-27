@@ -5,7 +5,7 @@ class FluxoService{
 
     setFluxoBasico(data){
         var lista = {}
-        var CT
+        var k = null
         
         for(var i=0; i< Object.keys(data.Fluxo_Basico).length; i++){
             if(data.Fluxo_Basico[i].search(data.Atores) >0){
@@ -22,13 +22,16 @@ class FluxoService{
                 }
             }
         }
-        CT = {
+        var CT = {
             "Título": [data.Id +" - " + "Fluxo_Basico"],
             "Dados de teste": [data.dados],
             "Passos": [lista],
+            "Pós-condição" : k,
             "Id-UC": [data.Id],
             "Fluxo-UC": ["Fluxo_Basico"]
         }
+        
+
         return CT
     }
 
@@ -91,6 +94,7 @@ class FluxoService{
             
             var CT = JSON.parse(JSON.stringify(CTaux));
             array.push(CT) 
+            
         }
         return array
     }
@@ -116,7 +120,6 @@ class FluxoService{
                     tupla = Object.keys(data.Fluxos_de_Excecao[keys][i])
                     if(data.Fluxos_de_Excecao[keys][i][tupla][0] > index){
                         index2 = data.Fluxos_de_Excecao[keys][i][tupla][0]
-                        console.log(data.Fluxos_de_Excecao[keys][i][tupla][1])
                         for(var j = index2-1; j < (data[data.Fluxos_de_Excecao[keys][i][tupla][1]]).length ; j++){
                             arr.push(data[data.Fluxos_de_Excecao[keys][i][tupla][1]][j])
                         }

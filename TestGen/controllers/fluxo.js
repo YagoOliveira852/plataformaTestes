@@ -12,10 +12,9 @@ module.exports = app => {
 
     app.post('/fluxo/basico', (req,res)=> {
         data = req.body
-    
         
         CT = fluxoService.setFluxoBasico(data)
-
+    
         res.json(CT)
     })
 
@@ -32,6 +31,20 @@ module.exports = app => {
 
         array = fluxoService.setFluxoExcecao(data)
 
+        res.json(array)
+    })
+    app.post('/fluxo/geral', (req,res)=> {
+        data = req.body
+        var array = []
+
+        CT = fluxoService.setFluxoBasico(data)
+        array1 = fluxoService.setFluxoAlternativo(data)
+        array2 = fluxoService.setFluxoExcecao(data)
+        array.push(CT)
+        array.push(array1)
+        array.push(array2)
+
+        
         res.json(array)
     })
 }
