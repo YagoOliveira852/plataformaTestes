@@ -8,7 +8,30 @@ const fluxoService = new FluxoService();
 
 module.exports = app => {
 
-    app.get('/fluxo/basico', (req,res)=> {res.json('o servidor está na porta 3000')})
+    app.get('/categories', (req,res)=> {
+        const categories = 
+        {
+            "categories" : [
+                {
+                "id": 1,
+                "name" : "Fluxo Básico" 
+                },
+                {
+                "id": 2,
+                "name" : "Fluxo Alternativo" 
+                },
+                {
+                "id": 3,
+                "name" : "Fluxo Exceção" 
+                },
+                {
+                "id": 4,
+                "name" : "Fluxo Geral (todas as opções)" 
+                }
+            ]
+        }
+        res.json((categories).categories)
+    })
 
     app.post('/fluxo/basico', (req,res)=> {
         data = req.body
