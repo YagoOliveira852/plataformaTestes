@@ -29,6 +29,9 @@ const Home = () => (
             style={{
             padding: 24,
             minHeight: 380,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center,'
             }}
         >
             <Form/>

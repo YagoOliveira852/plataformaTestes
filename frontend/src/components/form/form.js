@@ -1,6 +1,7 @@
 import { Button, Form, Input, Select } from 'antd';
 import React from 'react';
-import { CreateUseCase } from '../../service/UseCaseService';
+import { CreateCaseBasico } from '../../service/CaseBasico';
+
 const { Option } = Select;
 const layout = {
   labelCol: {
@@ -20,7 +21,7 @@ const tailLayout = {
 const FormComponent = () => {
   const [form] = Form.useForm();
   const onFinish = async (values) => {
-    await CreateUseCase(values)
+    await CreateCaseBasico(values)
     console.log(values)
   };
 
@@ -40,7 +41,10 @@ const FormComponent = () => {
           },
         ]}
       >
-        <Input/>
+        <Input style={{
+          display:'flex',
+          flexDirection:'column',
+        }}/>
       </Form.Item>
       <Form.Item
         name="Fluxo"
@@ -55,10 +59,10 @@ const FormComponent = () => {
           placeholder="Selecione o Fluxo do Caso de Uso"
           allowClear
         > 
-          <Option value="Geral">Todos</Option>
-          <Option value="Basico">Basico</Option>
-          <Option value="Alternativo">Alternativo</Option>
-          <Option value="Excecao">Excecao</Option>
+          <Option value="Geral" id={1}>Todos</Option>
+          <Option value="Basico" id={2}>Basico</Option>
+          <Option value="Alternativo" id={3}>Alternativo</Option>
+          <Option value="Excecao"id={4}>Excecao</Option>
         </Select>
       </Form.Item>
     
