@@ -1,6 +1,10 @@
 import { Button, Form, Input, Select } from 'antd';
 import React from 'react';
+import { useState } from 'react';
 import { CreateCaseBasico } from '../../service/CaseBasico';
+import { CreateCaseAlternativo } from '../../service/CaseAlternativo';
+import { CreateCaseExcecao } from '../../service/CaseExcecao';
+import { CreateCaseTodos } from '../../service/CaseTodos';
 
 const { Option } = Select;
 const layout = {
@@ -20,9 +24,31 @@ const tailLayout = {
 
 const FormComponent = () => {
   const [form] = Form.useForm();
+  const [selectedOption, setSelectedOption] = useState('');
+  const HandleChange = (e) => {
+    setSelectedOption(e)
+    console.log(e)
+  }
   const onFinish = async (values) => {
-    await CreateCaseBasico(values)
-    console.log(values)
+    if(selectedOption === "Basico"){
+      const resultBasico = await CreateCaseBasico(values)
+      console.log(typeof(values))
+      console.log(resultBasico)
+    }
+    else if(selectedOption === "Alternativo"){
+      const resultAlternativo = await CreateCaseAlternativo(values)
+      console.log(typeof(values))
+      console.log(resultAlternativo)
+    }
+    else if(selectedOption === "Excecao"){
+      const resultExcecao = await CreateCaseExcecao(values)
+      console.log(resultExcecao)
+    }
+    else if(selectedOption === "Geral"){
+      const resultGeral = await CreateCaseTodos(values)
+      console.log(resultGeral)
+    }
+    
   };
 
   const onReset = () => {
@@ -57,12 +83,13 @@ const FormComponent = () => {
       >
         <Select
           placeholder="Selecione o Fluxo do Caso de Uso"
+          onChange= {(e) =>{HandleChange(e)}}
           allowClear
         > 
-          <Option value="Geral" id={1}>Todos</Option>
-          <Option value="Basico" id={2}>Basico</Option>
-          <Option value="Alternativo" id={3}>Alternativo</Option>
-          <Option value="Excecao"id={4}>Excecao</Option>
+          <Option value="Geral"  >Todos</Option>
+          <Option value="Basico" >Basico</Option>
+          <Option value="Alternativo" >Alternativo</Option>
+          <Option value="Excecao" >Excecao</Option>
         </Select>
       </Form.Item>
     
