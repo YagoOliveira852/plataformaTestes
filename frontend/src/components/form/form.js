@@ -5,7 +5,9 @@ import { CreateCaseBasico } from '../../service/CaseBasico';
 import { CreateCaseAlternativo } from '../../service/CaseAlternativo';
 import { CreateCaseExcecao } from '../../service/CaseExcecao';
 import { CreateCaseTodos } from '../../service/CaseTodos';
+/* import DraggerBox from '../draggerbox/draggerbox'; */
 
+const {TextArea} = Input;
 const { Option } = Select;
 const layout = {
   labelCol: {
@@ -24,29 +26,27 @@ const tailLayout = {
 
 const FormComponent = () => {
   const [form] = Form.useForm();
+
   const [selectedOption, setSelectedOption] = useState('');
   const HandleChange = (e) => {
     setSelectedOption(e)
     console.log(e)
   }
+
   const onFinish = async (values) => {
+    var request = JSON.parse(JSON.stringify(values));
+    const usecase= JSON.parse(request['Caso de Uso'])
     if(selectedOption === "Basico"){
-      const resultBasico = await CreateCaseBasico(values)
-      console.log(typeof(values))
-      console.log(resultBasico)
+      /* const resultBasico =  */await CreateCaseBasico(usecase)
     }
     else if(selectedOption === "Alternativo"){
-      const resultAlternativo = await CreateCaseAlternativo(values)
-      console.log(typeof(values))
-      console.log(resultAlternativo)
+      /* const resultAlternativo =  */await CreateCaseAlternativo(usecase)
     }
     else if(selectedOption === "Excecao"){
-      const resultExcecao = await CreateCaseExcecao(values)
-      console.log(resultExcecao)
+      /* const resultExcecao =  */await CreateCaseExcecao(usecase)
     }
     else if(selectedOption === "Geral"){
-      const resultGeral = await CreateCaseTodos(values)
-      console.log(resultGeral)
+      /* const resultGeral =  */await CreateCaseTodos(usecase)
     }
     
   };
@@ -67,10 +67,15 @@ const FormComponent = () => {
           },
         ]}
       >
-        <Input style={{
-          display:'flex',
-          flexDirection:'column',
-        }}/>
+        {/* <DraggerBox/> */}
+        <TextArea
+        placeholder="Insira o Caso de uso"
+        autoSize={{
+          minRows: 2,
+          maxRows: 8,
+        }} 
+        />
+        
       </Form.Item>
       <Form.Item
         name="Fluxo"
@@ -85,6 +90,9 @@ const FormComponent = () => {
           placeholder="Selecione o Fluxo do Caso de Uso"
           onChange= {(e) =>{HandleChange(e)}}
           allowClear
+          style={{
+            display:'flex',
+          }}
         > 
           <Option value="Geral"  >Todos</Option>
           <Option value="Basico" >Basico</Option>
