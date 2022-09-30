@@ -6,7 +6,11 @@ const { Header, Content, Footer } = Layout;
 
 const CaseTest = () => (
     <div>
-        <Layout style={{height:760}}>
+        <Layout 
+        style={{
+            height: '100vh',
+            background: '#f0f2f5'
+            }}>
         <Header
         style={{
             position: 'fixed',

@@ -6,7 +6,11 @@ const { Header, Content, Footer } = Layout;
 
 const Home = () => (
     <div>
-        <Layout style={{height:760}}>
+        <Layout 
+        style={{
+            height: '100vh',
+            background: '#f0f2f5'
+            }}>
         <Header
         style={{
             position: 'fixed',
@@ -31,7 +35,7 @@ const Home = () => (
             minHeight: 380,
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center,'
+            alignItems: 'center'
             }}
         >
             <Form/>

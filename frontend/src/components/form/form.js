@@ -57,7 +57,12 @@ const FormComponent = () => {
 
 
   return (
-    <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
+    <Form {...layout} form={form} name="control-hooks" onFinish={onFinish} style={{
+      width: 800,
+      display: 'table-column-group',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingRight:'200px'}}>
       <Form.Item
         name="Caso de Uso"
         label="Caso de Uso"
@@ -102,10 +107,18 @@ const FormComponent = () => {
       </Form.Item>
     
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit"
+        style={{
+          width:'150px',
+          height:'50px'
+        }}>
           Submeter
         </Button>
-        <Button htmlType="button" onClick={onReset}>
+        <Button htmlType="button" onClick={onReset}
+        style={{
+          width:'150px',
+          height:'50px'
+        }}>
           Resetar
         </Button>
       </Form.Item>
