@@ -40,7 +40,10 @@ const FormComponent = () => {
       /* const resultBasico =  */await CreateCaseBasico(usecase)
     }
     else if(selectedOption === "Alternativo"){
-      /* const resultAlternativo =  */await CreateCaseAlternativo(usecase)
+      /* const resultAlternativo =  */await CreateCaseAlternativo(usecase).then(res =>{
+        console.log(res.data);
+      })
+      // console.log(typeof(resultAlternativo))
     }
     else if(selectedOption === "Excecao"){
       /* const resultExcecao =  */await CreateCaseExcecao(usecase)
@@ -63,25 +66,27 @@ const FormComponent = () => {
       justifyContent: 'center',
       alignItems: 'center',
       paddingRight:'200px'}}>
-      <Form.Item
-        name="Caso de Uso"
-        label="Caso de Uso"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        {/* <DraggerBox/> */}
-        <TextArea
-        placeholder="Insira o Caso de uso"
-        autoSize={{
-          minRows: 2,
-          maxRows: 8,
-        }} 
-        />
-        
-      </Form.Item>
+      <div>
+        <Form.Item 
+          name="Caso de Uso"
+          label="Caso de Uso"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          {/* <DraggerBox/> */}
+          <TextArea
+          placeholder="Insira o Caso de uso"
+          autoSize={{
+            minRows: 2,
+            maxRows: 8,
+          }} 
+          />
+          
+        </Form.Item>
+      </div>
       <Form.Item
         name="Fluxo"
         label="Fluxo"

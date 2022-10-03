@@ -35,7 +35,7 @@ const Home = () => (
             minHeight: 380,
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
             }}
         >
             <Form/>
