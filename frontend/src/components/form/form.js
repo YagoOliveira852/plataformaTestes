@@ -28,6 +28,10 @@ const FormComponent = () => {
   const [form] = Form.useForm();
 
   const [selectedOption, setSelectedOption] = useState('');
+  const [ResBasico, setResBasico] = useState('');
+  const [ResAlternativo, setResAlternativo] = useState('');
+  const [ResExcecao, setResExcecao] = useState('');
+  const [ResGeral, setResGeral] = useState('');
   const HandleChange = (e) => {
     setSelectedOption(e)
     console.log(e)
@@ -37,19 +41,28 @@ const FormComponent = () => {
     var request = JSON.parse(JSON.stringify(values));
     const usecase= JSON.parse(request['Caso de Uso'])
     if(selectedOption === "Basico"){
-      /* const resultBasico =  */await CreateCaseBasico(usecase)
+      await CreateCaseBasico(usecase).then(res =>{
+        setResBasico(res)
+      })
+      console.log(ResBasico.data);
     }
     else if(selectedOption === "Alternativo"){
-      /* const resultAlternativo =  */await CreateCaseAlternativo(usecase).then(res =>{
-        console.log(res.data);
+      await CreateCaseAlternativo(usecase).then(res =>{
+        setResAlternativo(res)
       })
-      // console.log(typeof(resultAlternativo))
+      console.log(ResAlternativo.data);
     }
     else if(selectedOption === "Excecao"){
-      /* const resultExcecao =  */await CreateCaseExcecao(usecase)
+      await CreateCaseExcecao(usecase).then(res =>{
+        setResExcecao(res)
+      })
+      console.log(ResExcecao.data);
     }
     else if(selectedOption === "Geral"){
-      /* const resultGeral =  */await CreateCaseTodos(usecase)
+      await CreateCaseTodos(usecase).then(res =>{
+        setResGeral(res)
+      })
+      console.log(ResGeral.data);
     }
     
   };
