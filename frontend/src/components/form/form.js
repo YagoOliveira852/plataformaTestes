@@ -24,45 +24,42 @@ const tailLayout = {
   },
 };
 
-const FormComponent = () => {
+const FormComponent = ({FluxoBasico, FluxoAlternativo, FluxoExcecao, FluxoGeral}) => {
   const [form] = Form.useForm();
 
   const [selectedOption, setSelectedOption] = useState('');
-  const [ResBasico, setResBasico] = useState('');
-  const [ResAlternativo, setResAlternativo] = useState('');
-  const [ResExcecao, setResExcecao] = useState('');
-  const [ResGeral, setResGeral] = useState('');
+
   const HandleChange = (e) => {
     setSelectedOption(e)
     console.log(e)
   }
+
+  // function RouteFunction(){
+  //   window.location.href = "http://localhost:3000/casetest"
+  // }
 
   const onFinish = async (values) => {
     var request = JSON.parse(JSON.stringify(values));
     const usecase= JSON.parse(request['Caso de Uso'])
     if(selectedOption === "Basico"){
       await CreateCaseBasico(usecase).then(res =>{
-        setResBasico(res)
+        FluxoBasico(res)
       })
-      console.log(ResBasico.data);
     }
     else if(selectedOption === "Alternativo"){
       await CreateCaseAlternativo(usecase).then(res =>{
-        setResAlternativo(res)
+        FluxoAlternativo(res)
       })
-      console.log(ResAlternativo.data);
     }
     else if(selectedOption === "Excecao"){
       await CreateCaseExcecao(usecase).then(res =>{
-        setResExcecao(res)
+        FluxoExcecao(res)
       })
-      console.log(ResExcecao.data);
     }
     else if(selectedOption === "Geral"){
       await CreateCaseTodos(usecase).then(res =>{
-        setResGeral(res)
+        FluxoGeral(res)
       })
-      console.log(ResGeral.data);
     }
     
   };
