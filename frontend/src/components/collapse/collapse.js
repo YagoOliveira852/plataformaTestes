@@ -1,8 +1,10 @@
 import { Collapse } from 'antd';
 import React from 'react';
+import { useContext } from 'react';
+import MyContext from '../../context/myContext';
 const { Panel } = Collapse;
 const text = `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus suscipit commodo tempus. Nulla cursus, libero ut condimentum consequat, augue purus rhoncus augue, et tristique nibh ligula eget lacus. Aliquam laoreet condimentum varius. Maecenas dolor nisl, laoreet et ante ut, varius hendrerit nulla. Integer posuere nibh at neque pretium tempor nec ut turpis. Nam mattis velit ac ullamcorper pharetra. Ut sit amet lectus egestas, sollicitudin lorem quis, fermentum turpis. Pellentesque in purus nisl. Pellentesque egestas eros et elit efficitur tristique. Mauris vestibulum, justo quis euismod placerat, leo ante laoreet enim, posuere pulvinar mauris diam id dui.
+O Resultado aparecerá aqui após a requisição ser executada.
 `;
 
 const CollapseComponent
@@ -10,17 +12,22 @@ const CollapseComponent
   const onChange = (key) => {
     console.log(key);
   };
-
+  const [ResBasico, ResAlternativo, ResExcecao, ResGeral] = useContext(MyContext)
+  console.log(typeof(ResBasico.data))
+  console.log(typeof(JSON.stringify(ResAlternativo.data)))
   return (
     <Collapse defaultActiveKey={['1']} onChange={onChange}>
-      <Panel header="This is panel header 1" key="1">
-        <p>{text}</p>
+      <Panel header="Resultado do Fluxo de Basico" key="1">
+        <p>{JSON.stringify(ResBasico.data)}</p>
       </Panel>
-      <Panel header="This is panel header 2" key="2">
-        <p>{text}</p>
+      <Panel header="Resultado do Fluxo de Alternativo" key="2">
+        <p>{JSON.stringify(ResAlternativo.data[0])}</p>
       </Panel>
-      <Panel header="This is panel header 3" key="3">
-        <p>{text}</p>
+      <Panel header="Resultado do Fluxo de Execeção" key="3">
+        <p>{JSON.stringify(ResExcecao.data)}</p>
+      </Panel>
+      <Panel header="Resultado do Fluxo Geral" key="4">
+        <p>{JSON.stringify(ResGeral.data)}</p>
       </Panel>
     </Collapse>
   );

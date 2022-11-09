@@ -1,36 +1,33 @@
 import { Layout} from 'antd';
 import React from 'react';
-import { useState } from 'react';
+// import { useState } from 'react';
 import FormComponent from '../../components/form/form';
 import MenuComponent from '../../components/menu/menu';
 const { Header, Content, Footer } = Layout;
 
 const Home = () => {
     
-    const [ResBasico, setResBasico] = useState('');
-    const [ResAlternativo, setResAlternativo] = useState('');
-    const [ResExcecao, setResExcecao] = useState('');
-    const [ResGeral, setResGeral] = useState('');
+    
 
-    const FluxoBasico = (res) => {
-        setResBasico(res)
-        console.log(ResBasico.data)
-    }
+    // const FluxoBasico = (res) => {
+    //     setResBasico(res)
+    //     console.log(ResBasico.data)
+    // }
 
-    const FluxoAlternativo = (res) => {
-        setResAlternativo(res)
-        console.log(ResAlternativo.data)
-    }
+    // const FluxoAlternativo = (res) => {
+    //     setResAlternativo(res)
+    //     console.log(ResAlternativo.data)
+    // }
 
-    const FluxoExcecao = (res) => {
-        setResExcecao(res)
-        console.log(ResExcecao.data)
-    }
+    // const FluxoExcecao = (res) => {
+    //     setResExcecao(res)
+    //     console.log(ResExcecao.data)
+    // }
 
-    const FluxoGeral = (res) => {
-        setResGeral(res)
-        console.log(ResGeral.data)
-    }
+    // const FluxoGeral = (res) => {
+    //     setResGeral(res)
+    //     console.log(ResGeral.data)
+    // }
 
     return (
     <div>
@@ -67,10 +64,10 @@ const Home = () => {
             }}
         >
             <FormComponent 
-            FluxoBasico={FluxoBasico} 
-            FluxoAlternativo={FluxoAlternativo} 
-            FluxoExcecao= {FluxoExcecao} 
-            FluxoGeral={FluxoGeral}
+            // FluxoBasico={FluxoBasico} 
+            // FluxoAlternativo={FluxoAlternativo} 
+            // FluxoExcecao= {FluxoExcecao} 
+            // FluxoGeral={FluxoGeral}
             />
         </div>
         </Content>

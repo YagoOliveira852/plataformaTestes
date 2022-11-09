@@ -1,5 +1,6 @@
 import { Button, Form, Input, Select } from 'antd';
-import React from 'react';
+import React, { useContext } from 'react';
+import MyContext from '../../context/myContext';
 import { useState } from 'react';
 import { CreateCaseBasico } from '../../service/CaseBasico';
 import { CreateCaseAlternativo } from '../../service/CaseAlternativo';
@@ -24,9 +25,9 @@ const tailLayout = {
   },
 };
 
-const FormComponent = ({FluxoBasico, FluxoAlternativo, FluxoExcecao, FluxoGeral}) => {
+const FormComponent = (/* {FluxoBasico, FluxoAlternativo, FluxoExcecao, FluxoGeral} */) => {
   const [form] = Form.useForm();
-
+  const [ResBasico, setResBasico, ResAlternativo, setResAlternativo, ResExcecao, setResExcecao, ResGeral, setResGeral] = useContext(MyContext)
   const [selectedOption, setSelectedOption] = useState('');
 
   const HandleChange = (e) => {
@@ -43,22 +44,30 @@ const FormComponent = ({FluxoBasico, FluxoAlternativo, FluxoExcecao, FluxoGeral}
     const usecase= JSON.parse(request['Caso de Uso'])
     if(selectedOption === "Basico"){
       await CreateCaseBasico(usecase).then(res =>{
-        FluxoBasico(res)
+        // FluxoBasico(res)
+        setResBasico(res)
+        console.log(ResBasico.data)
       })
     }
     else if(selectedOption === "Alternativo"){
       await CreateCaseAlternativo(usecase).then(res =>{
-        FluxoAlternativo(res)
+        // FluxoAlternativo(res)
+        setResAlternativo(res)
+        console.log(ResAlternativo.data[0])
       })
     }
     else if(selectedOption === "Excecao"){
       await CreateCaseExcecao(usecase).then(res =>{
-        FluxoExcecao(res)
+        // FluxoExcecao(res)
+        setResExcecao(res)
+        console.log(ResExcecao.data)
       })
     }
     else if(selectedOption === "Geral"){
       await CreateCaseTodos(usecase).then(res =>{
-        FluxoGeral(res)
+        // FluxoGeral(res)
+        setResGeral(res)
+        console.log(ResGeral)
       })
     }
     
