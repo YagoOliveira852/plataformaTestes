@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import MyContext from './context/myContext';
 import Home from './pages/home/home';
 import CaseTest from "./pages/casetest/casetest"
 import {BrowserRouter, Routes, Route} from "react-router-dom"
@@ -11,17 +10,41 @@ function App() {
   const [ResExcecao, setResExcecao] = useState('');
   const [ResGeral, setResGeral] = useState('');
 
+  const FluxoBasico = (res) => {
+    setResBasico(res)
+  }
+
+  const FluxoAlternativo = (res) => {
+      setResAlternativo(res)
+  }
+
+  const FluxoExcecao = (res) => {
+      setResExcecao(res)
+  }
+
+  const FluxoGeral = (res) => {
+      setResGeral(res)
+  }
+
   return (
-      <MyContext.Provider value={[ResBasico, setResBasico, ResAlternativo, setResAlternativo, ResExcecao, setResExcecao, ResGeral, setResGeral]}>
-        <div>
-          <BrowserRouter>
-              <Routes>
-                  <Route element={<Home/>} path="/"/>
-                  <Route  element={<CaseTest/>} path="/casetest"/>
-              </Routes>
-          </BrowserRouter>
-        </div>
-      </MyContext.Provider>
+  <div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Home 
+          FluxoBasico={FluxoBasico} 
+          FluxoAlternativo={FluxoAlternativo} 
+          FluxoExcecao= {FluxoExcecao} 
+          FluxoGeral={FluxoGeral}
+        />} path="/"/>
+        <Route  element={<CaseTest
+          ResBasico={ResBasico}
+          ResAlternativo={ResAlternativo}
+          ResExcecao={ResExcecao}
+          ResGeral={ResGeral}
+        />} path="/casetest"/>
+      </Routes>
+    </BrowserRouter>
+  </div>
   )
 }
 

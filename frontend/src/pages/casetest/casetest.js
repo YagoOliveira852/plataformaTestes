@@ -4,7 +4,8 @@ import CollapseComponent from '../../components/collapse/collapse';
 import MenuComponent from '../../components/menu/menu';
 const { Header, Content, Footer } = Layout;
 
-const CaseTest = () => (
+    const CaseTest = ({ResBasico, ResAlternativo, ResExcecao, ResGeral}) => {
+    return(
     <div>
         <Layout 
         style={{
@@ -35,7 +36,12 @@ const CaseTest = () => (
             minHeight: 380,
             }}
         >
-            <CollapseComponent/>
+            <CollapseComponent
+                ResBasico={ResBasico}
+                ResAlternativo={ResAlternativo}
+                ResExcecao={ResExcecao}
+                ResGeral={ResGeral}
+            />
         </div>
         </Content>
         <Footer
@@ -43,10 +49,9 @@ const CaseTest = () => (
             textAlign: 'center',
         }}
         >
-        
         </Footer>
     </Layout>
     </div>
-);
+)};
 
 export default CaseTest;
