@@ -9,7 +9,8 @@ const { Header, Content, Footer } = Layout;
     <div>
         <Layout 
         style={{
-            height: '100vh',
+            height: '100%',
+            minHeight: '100vh',
             background: '#f0f2f5'
             }}>
         <Header

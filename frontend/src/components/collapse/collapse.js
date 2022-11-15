@@ -9,19 +9,20 @@ const CollapseComponent = ({ResBasico, ResAlternativo, ResExcecao, ResGeral}) =>
   const onChange = (key) => {
     console.log(key);
   };
+
   return (
-    <Collapse defaultActiveKey={['1']} onChange={onChange}>
+    <Collapse defaultActiveKey={['']} onChange={onChange}>
       <Panel header="Resultado do Fluxo de Basico" key="1">
-        <pre>{JSON.stringify(ResBasico.data)}</pre>
+        <pre>{(JSON.stringify(ResBasico.data, null, 2))}</pre>
       </Panel>
       <Panel header="Resultado do Fluxo de Alternativo" key="2">
-        <pre>{JSON.stringify(ResAlternativo.data)}</pre>
+        <pre>{JSON.stringify(ResAlternativo.data, null, 2)}</pre>
       </Panel>
       <Panel header="Resultado do Fluxo de Execeção" key="3">
-        <pre>{JSON.stringify(ResExcecao.data)}</pre>
+        <pre>{JSON.stringify(ResExcecao.data, null, 2)}</pre>
       </Panel>
       <Panel header="Resultado do Fluxo Geral" key="4">
-        <pre>{JSON.stringify(ResGeral.data)}</pre>
+        <pre>{JSON.stringify(ResGeral.data, null, 2)}</pre>
       </Panel>
     </Collapse>
   );

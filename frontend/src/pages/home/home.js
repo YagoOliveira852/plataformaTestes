@@ -1,22 +1,17 @@
 import { Layout} from 'antd';
 import React from 'react';
-// import { useState } from 'react';
 import FormComponent from '../../components/form/form';
 import MenuComponent from '../../components/menu/menu';
 const { Header, Content, Footer } = Layout;
 
-const Home = ({FluxoBasico, FluxoAlternativo, FluxoExcecao, FluxoGeral}) => {
-    
-    // const [ResBasico, setResBasico] = useState('');
-    // const [ResAlternativo, setResAlternativo] = useState('');
-    // const [ResExcecao, setResExcecao] = useState('');
-    // const [ResGeral, setResGeral] = useState('');
+const Home = ({FluxoBasico, FluxoAlternativo, FluxoExcecao, FluxoGeral}) => {   
     
     return (
     <div>
         <Layout 
         style={{
-            height: '100vh',
+            height: '100%',
+            minHeight: '100vh',
             background: '#f0f2f5'
             }}>
         <Header
